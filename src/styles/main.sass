@@ -1,0 +1,284 @@
+@import "~bootstrap/scss/bootstrap"
+@import "~bootstrap-select/sass/bootstrap-select"
+
+=v-lg
+  @media only screen and (max-width: 1440px)
+    @content
+=v-md
+  @media only screen and (max-width: 1024px)
+    @content
+=v-sm
+  @media only screen and (max-width: 768px)
+    @content
+=v-xs
+  @media only screen and (max-width: 480px)
+    @content
+
+=placeholder
+  &::-webkit-input-placeholder
+    @content
+  &:-moz-placeholder
+    @content
+  &::-moz-placeholder
+    @content
+  &:-ms-input-placeholder
+    @content
+
+$black: #000
+$white: #fff
+$red: #EF483E
+$dark: #343539
+$middle: #4B4B4F
+$grey: #717174
+$light: #CFCFCF
+$grd: #C4C4C4
+$font: Helvetica Neue, Arial, sans-serif
+
+body
+  color: $white
+  font-family: Helvetica Neue, Arial, sans-serif
+  font-size: 95%
+  background: $dark
+
+.main
+  padding-bottom: 115px
+  +v-xs
+    padding-bottom: 40px
+
+.title
+  font-size: 56px
+  font-weight: bold
+  line-height: 70px
+  +v-xs
+    font-size: 32px
+    line-height: 40px
+    margin-bottom: 10px
+
+.alert
+  &.alert-dark
+    margin: 0
+    padding: 20px 24px
+    background-color: $middle
+    border: none
+    border-radius: 0
+    p
+      padding: 0
+      margin: 0
+      color: $white
+      font-size: 15px
+      line-height: 18px
+
+.red-label
+  svg
+    color: $red
+
+.bootstrap-select
+  .filter-option-inner-inner
+    color: $black
+    font-size: 15px
+  &.show-tick
+    .filter-option-inner-inner
+      color: $light
+  .dropdown-menu
+    li
+      &.selected
+        display: none
+  .dropdown-menu
+    padding: 0
+    border-radius: 0
+    border: none
+    overflow-x: hidden
+    margin: -1px 0
+    li
+      padding: 0
+      font-size: 14px
+      color: $white
+      .dropdown-item
+        &:hover,
+        &.active
+          background-color: $red
+          box-shadow: none
+        &:active
+          background-color: lighten($dark, 25%)
+          box-shadow: none
+  .dropdown-toggle
+    border: none
+    &:focus
+      box-shadow: none !important
+      border: none !important
+      outline: none !important
+    &.btn-light
+      background-color: $white
+      border-radius: 0
+    &::after
+      border: none
+      content: '^'
+      font-size: 22px
+      font-weight: 400
+      transform: rotate(180deg) scaleY(.575)
+    &[aria-expanded="true"]
+      &::after
+        transform: translateY(2px) rotate(0deg) scaleY(.575)
+    &[title]
+      content: 'Не выбрана'
+
+.form-control
+  height: 44px
+  line-height: 44px
+  border: none
+  border-radius: 0
+
+.input-group
+  position: relative
+  padding: 0 15px
+  align-items: center
+  background-color: $middle
+  z-index: 1
+  &::after
+    position: absolute
+    left: 40px
+    top: 0
+    display: block
+    width: calc(100% - 168px)
+    height: 44px
+    content: ''
+    background: linear-gradient(90deg, rgba(196,196,196,0) 50%,$middle 100%)
+    z-index: 100
+  .form-control
+    position: relative
+    height: 44px
+    border: none
+    border-radius: 0
+    background-color: transparent
+    z-index: 1
+    +placeholder
+      color: $light
+      font-size: 15px
+      line-height: 44px
+  .input-group-text
+    display: inline-flex
+    padding: 4px 12px
+    height: 24px
+    color: $white
+    font-size: 13px
+    line-height: 24px
+    border: none
+    border-radius: 0
+    background-color: $grey
+    &:first-child
+      padding: 0
+      background-color: transparent
+    svg
+      width: 16px
+      height: 16px
+      stroke-width: 4px
+
+input,
+textarea
+  +placeholder
+    color: $light
+    font-size: 15px
+    line-height: 18px
+textarea
+  &.form-control
+    padding: 10px 14px
+    height: 80px
+    +placeholder
+      color: $light
+      font-size: 15px
+      line-height: 18px
+input
+  +placeholder
+    color: $black
+
+.form-title
+  display: flex
+  align-items: center
+  margin-top: 36px
+  padding-top: 0
+  &:first-of-type
+    margin-top: -2px
+  .ml-2
+    font-size: 24px
+    font-weight: bold
+    line-height: 30px
+  &__label
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 24px
+    height: 24px
+    padding: 0
+    color: $white
+    font-size: 16px
+    font-weight: 500
+    line-height: 20px
+    background-color: $red
+
+.form-label
+  font-size: 13px
+
+.form-check
+  display: flex !important
+  align-items: center
+  .form-check-label
+    font-size: 13px
+    margin-left: 10px
+    transform: translateY(2px)
+  .form-check-input
+    width: 24px
+    height: 24px
+    border-radius: 0
+    position: relative
+    &::before
+      position: absolute
+      top: 0
+      left: 0
+      width: 24px
+      height: 24px
+      display: block
+      content: ''
+      background-color: $dark
+      border: 2px solid $white
+      transform: matrix(1, 0, 0, -1, 0, 0)
+    &.checked-form-input
+      &::after
+        position: absolute
+        top: 6px
+        left: 6px
+        width: 12px
+        height: 12px
+        display: block
+        content: ''
+        background-color: $white
+
+.placeholder-symbol
+  position: relative
+  transition: all ease-out .3s
+  span
+    position: absolute
+    top: 10px
+    left: 25px
+    display: block
+    font-size: 18px
+    font-weight: 200
+    color: $light
+  &::before
+    position: absolute
+    top: 8px
+    left: 12px
+    display: block
+    content: '>'
+    font-size: 16px
+    color: $light
+  &::after
+    position: absolute
+    top: 10px
+    left: 12px
+    display: block
+    content: '_'
+    font-size: 16px
+    color: $light
+  &.focus-symbol
+    span, &:before, &:after
+      display: none

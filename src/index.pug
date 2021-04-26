@@ -1,0 +1,106 @@
+extends layouts/app
+
+block content
+  .main
+    .container
+      .mt-2
+        h1.title.pt-3.pb-0 FTL: Прямая машина
+      .row
+        .col-lg-7
+          form(action="", method="post")
+            h3.form-title
+              span.form-title__label.rounded-circle 1
+              span.ml-2 Маршрут
+            .my-2
+              label.form-label(for='locationFrom') Откуда
+              input#locationFrom.form-control(type='text')
+            .my-2
+              label.form-label(for='locationTo') Куда
+              input#locationTo.form-control(type='text')
+            h3.form-title
+              span.form-title__label.rounded-circle 2
+              span.ml-2 Транспорт
+            .row
+              .col-lg-8
+                .row.no-gutters
+                  .col-6
+                    label.form-label(for='carryingCapacity') Грузоподъемность
+                    select.selectpicker.w-100(name="carryingCapacity", multiple)
+                      option(value="1") Вариант 1
+                      option(value="2") Вариант 2
+                      option(value="3") Вариант 3
+                      option(value="4") Вариант 4
+                      option(value="5") Вариант 5
+                  .col-6.pl-3
+                    label.form-label(for='LoadingMethod') Способ погрузки
+                    select.selectpicker.w-100(name="LoadingMethod")
+                      option(value="0" selected) Задняя
+                      option(value="1") Вариант 1
+                      option(value="2") Вариант 2
+                      option(value="3") Вариант 3
+                      option(value="4") Вариант 4
+                      option(value="5") Вариант 5
+            h3.form-title
+              span.form-title__label.rounded-circle 3
+              span.ml-2 Груз
+            .row
+              .col-lg-8
+                .row.no-gutters
+                  .col-6.col-lg-12
+                    label.form-label(for='cargoType') Тип груза
+                    select.selectpicker.w-100(name="cargoType", multiple)
+                      option(value="1") Вариант 1
+                      option(value="2") Вариант 2
+                      option(value="3") Вариант 3
+                      option(value="4") Вариант 4
+                      option(value="5") Вариант 5
+                  .d-none.d-lg-block.col-6.my-2
+                    label.form-label(for='hazardClass') Класс опасности
+                    select.selectpicker.w-100(name="hazardClass")
+                      option(value="0" selected) Класс 5 - Окисление
+                      option(value="1") Вариант 1
+                      option(value="2") Вариант 2
+                      option(value="3") Вариант 3
+                      option(value="4") Вариант 4
+                      option(value="5") Вариант 5
+                  .col-6.pl-3.my-lg-2
+                    label.form-label(for='declaredValue')
+                      | Объявленная ценность, 
+                      | &#8381;
+                    .placeholder-symbol
+                      span 1
+                      input#declaredValue.form-control(type='text')
+                  .d-lg-none.col-6.pl-lg-3.my-2
+                    label.form-label(for='fromCelsius') От, &#8451;
+                    input#fromCelsius.form-control(type='text' placeholder="-20")
+                  .d-lg-none.col-6.pl-3.my-2
+                    label.form-label(for='toCelsius') До, &#8451;
+                    input#toCelsius.form-control(type='text' placeholder="+23")
+                  .col-lg-12
+                    .form-check
+                      input#temperatureRegtime.form-check-input(type='checkbox' value='')
+                      label.form-check-label(for='temperatureRegtime') Требуется температурный режим
+            h3.form-title
+              span.form-title__label.rounded-circle 4
+              span.ml-2 Время
+            .d-flex.justify-content-between
+              label.form-label Когда прибыть на точку
+              label.form-label 700 км в день
+            .mb-2
+              .input-group
+                span.input-group-text.red-label 
+                  i(data-feather="circle")
+                input#locationFirst.form-control(type='text' aria-label='long location not defined' placeholder="Длинный адрес с градиентом")
+                span.input-group-text НЕ ВЫБРАНО
+            .my-2
+              .input-group
+                span.input-group-text 
+                  i(data-feather="circle")
+                input#locationTwo.form-control(type='text' aria-label='location not defined' placeholder="Адрес не указан")
+                span.input-group-text НЕ ВЫБРАНО
+            .my-3
+              label.form-label(for='orderForm') Комментарий к заказу
+              textarea#orderForm.form-control(placeholder='Укажите особенности въезда на территорию склада или подъезда к адресу')
+        .col-lg-4
+          .alert.alert-dark.alert-dismissible.fade.show(role='alert')
+            p Для расчета стоимости необходимо ввести параметры груза, пункты отправки и прибытия.
